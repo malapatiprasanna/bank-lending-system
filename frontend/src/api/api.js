@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3001/api/v1'; // Backend URL
+const API_BASE_URL = 'https://bank-lending-system-ww9v.onrender.com'; // Backend URL
 
 export const createLoan = async (loanData) => {
   try {
