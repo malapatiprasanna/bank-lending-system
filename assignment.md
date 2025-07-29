@@ -4,16 +4,8 @@ import uuid
 import datetime
 
 app = Flask(__name__)
-
-# --- In-memory data store ---
-
-# This data will reset if the server restarts.
-
-# For persistence, you would integrate a database (e.g., SQLite, PostgreSQL, MongoDB).
 customers = {} 
 loans = {}    
-
-# --- Helper Functions ---
 
 def calculate_loan_details(principal_amount, loan_period_years, interest_rate):
    
@@ -34,8 +26,6 @@ def calculate_loan_details(principal_amount, loan_period_years, interest_rate):
         monthly_emi = round(total_amount_to_pay / total_emi_count, 2) # Round to 2 decimal places for currency
 
     return total_interest, total_amount_to_pay, total_emi_count, monthly_emi
-
-# --- API Endpoints ---
 
 @app.route('/loans', methods=['POST'])
 def lend_money():
@@ -217,7 +207,6 @@ def get_account_overview(customer_id):
 
     return jsonify(customer_loans_summary), 200
 
-# --- Run the Flask app ---
 if __name__ == '__main__':
 
     # To run: python app.py
