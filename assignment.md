@@ -232,10 +232,18 @@ The server will start, usually on http://127.0.0.1:5000/. You can then use tools
 # Example Usage (using curl):
 
 # 1. LEND a loan:
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{
-    "customer_id": "CUST001",
-    "principal_amount": 500000,
-    "loan_period_years": 5,
-    "interest_rate": 0.10
-}' http://127.0.0.1:5000/loans
+   ```bash
+      curl -X POST -H "Content-Type: application/json" -d '{
+          "customer_id": "CUST001",
+          "principal_amount": 500000,
+          "loan_period_years": 5,
+          "interest_rate": 0.10
+      }' http://127.0.0.1:5000/loans
+
+ # 2. Make a PAYMENT (EMI):
+   ```bash
+      curl -X POST -H"Content-Type: application/json" -d '{
+         "payment_type": "EMI_PAYMENT",
+         "amount": 12500
+      }' http://127.0.0.1:5000/loans/LOAN_ID_FROM_ABOVE/payments
+# 3.
