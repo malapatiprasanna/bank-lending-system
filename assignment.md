@@ -230,7 +230,7 @@ Run the file from your terminal: python app.py
 The server will start, usually on http://127.0.0.1:5000/. You can then use tools like Postman, curl, or a simple Python script to send requests to these endpoints.
 
 # 1. LEND a loan:
-```bash
+
 curl -X POST -H "Content-Type: application/json" -d '{
     "customer_id": "CUST001",
     "principal_amount": 500000,
@@ -239,23 +239,22 @@ curl -X POST -H "Content-Type: application/json" -d '{
 }' http://127.0.0.1:5000/loans
 
 # 2. Make a PAYMENT (EMI):
-```bash
 curl -X POST -H "Content-Type: application/json" -d '{
     "payment_type": "EMI_PAYMENT",
     "amount": 12500
 }' http://127.0.0.1:5000/loans/LOAN_ID_FROM_ABOVE/payments
 
 # 3. Make a PAYMENT (LUMP SUM):
-```bash
+
 curl -X POST -H "Content-Type: application/json" -d '{
     "payment_type": "LUMP_SUM",
     "amount": 50000
 }' http://127.0.0.1:5000/loans/LOAN_ID_FROM_ABOVE/payments
 
 # 4. Get LEDGER for a loan:
-```bash
+
 curl http://127.0.0.1:5000/loans/LOAN_ID_FROM_ABOVE/ledger
 
 # 5. Get ACCOUNT OVERVIEW for a customer:
-```bash
+
 curl http://127.0.0.1:5000/customers/CUST001/loans
