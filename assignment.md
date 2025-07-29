@@ -6,18 +6,17 @@ import datetime
 app = Flask(__name__)
 
 # --- In-memory data store ---
+
 # This data will reset if the server restarts.
+
 # For persistence, you would integrate a database (e.g., SQLite, PostgreSQL, MongoDB).
-customers = {} # Stores customer details: {customer_id: {"name": "Customer Name"}}
-loans = {}     # Stores loan details: {loan_id: {...loan_details...}}
+customers = {} 
+loans = {}    
 
 # --- Helper Functions ---
 
 def calculate_loan_details(principal_amount, loan_period_years, interest_rate):
-    """
-    Calculates total interest, total amount to pay, total EMI count, and monthly EMI.
-    Assumes simple interest and annual interest rate.
-    """
+   
     if principal_amount <= 0 or loan_period_years <= 0 or interest_rate < 0:
         raise ValueError("Invalid input for loan calculation.")
 
@@ -40,11 +39,7 @@ def calculate_loan_details(principal_amount, loan_period_years, interest_rate):
 
 @app.route('/loans', methods=['POST'])
 def lend_money():
-    """
-    LEND: Allows the bank to give loans to customers.
-    Input: customer_id, loan_amount(P), loan_period(N), rate_of_interest(I)
-    Returns: Total amount(A) to be paid and the monthly EMI.
-    """
+    
     data = request.json
     customer_id = data.get('customer_id')
     principal_amount = data.get('principal_amount')
@@ -107,11 +102,7 @@ def lend_money():
 
 @app.route('/loans/<loan_id>/payments', methods=['POST'])
 def make_payment(loan_id):
-    """
-    PAYMENT: Customers can pay back loans either in EMI or LUMP SUM.
-    Input: payment_type (EMI_PAYMENT/LUMP_SUM), amount
-    Deducts from total amount, can reduce number of EMIs.
-    """
+    
     data = request.json
     payment_type = data.get('payment_type')
     amount = data.get('amount')
@@ -172,10 +163,7 @@ def make_payment(loan_id):
 
 @app.route('/loans/<loan_id>/ledger', methods=['GET'])
 def get_ledger(loan_id):
-    """
-    LEDGER: Customers can check all transactions for a loan ID.
-    Returns: All transactions, balance amount, monthly EMI, and number of EMIs left.
-    """
+   
     loan = loans.get(loan_id)
     if not loan:
         return jsonify({"error": "Loan not found"}), 404
@@ -197,11 +185,7 @@ def get_ledger(loan_id):
 
 @app.route('/customers/<customer_id>/loans', methods=['GET'])
 def get_account_overview(customer_id):
-    """
-    ACCOUNT OVERVIEW: Lists all loans a customer has taken.
-    For each loan: loan amount(P), Total amount(A), EMI amount, Total Interest(I),
-    amount paid till date, number of EMIs left.
-    """
+    
     customer_loans_summary = []
     found_loans = False
 
@@ -235,26 +219,24 @@ def get_account_overview(customer_id):
 
 # --- Run the Flask app ---
 if __name__ == '__main__':
+
     # To run: python app.py
+    
     # This will start a development server.
+    
     # Access it at http://127.0.0.1:5000/
-    app.run(debug=True) # debug=True provides helpful error messages during development
-I will provide the solutions for the Bank System assignment and the problems from problems.md in separate, self-contained code blocks. Each block will represent a complete file, as if it were in its own GitHub repository.
+    
+    app.run(debug=True) 
 
-Assignment: Bank System (assignments.md)
-Here is the Python Flask application for the Bank System, using in-memory data storage for simplicity as requested.
-Bank System Backend (Flask)
-26 Jul, 22:08
 
-Open
-
-To run this Bank System:
+# To run this Bank System:
 
 Save the code above as app.py.
 
 Make sure you have Flask installed (pip install Flask).
 
 Run the file from your terminal: python app.py
+
 
 The server will start, usually on http://127.0.0.1:5000/. You can then use tools like Postman, curl, or a simple Python script to send requests to these endpoints.
 
