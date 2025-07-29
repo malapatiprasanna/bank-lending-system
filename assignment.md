@@ -228,7 +228,7 @@ Run the file from your terminal: python app.py
 
 
 The server will start, usually on http://127.0.0.1:5000/. You can then use tools like Postman, curl, or a simple Python script to send requests to these endpoints.
-
+```bash
 # 1. LEND a loan:
 
 curl -X POST -H "Content-Type: application/json" -d '{
