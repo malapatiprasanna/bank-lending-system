@@ -1,4 +1,4 @@
-#Bank Lending System
+# Bank Lending System
 This project implements a simple bank lending system with a Node.js Express backend, a React.js frontend, and an SQLite database, as per the specified assignment requirements. It allows a bank to manage customer loans, process payments, and provide detailed transaction histories and account overviews.
 
 ## Table of Contents
@@ -92,109 +92,16 @@ Tailwind CSS (for styling)
 
 create-react-app (for project scaffolding)
 
-# Project Structure
-bank-lending-system/
-├── backend/
-│   ├── package.json
-│   ├── src/
-│   │   ├── db.js
-│   │   ├── server.js
-│   │   └── routes/
-│   │       └── loanRoutes.js
-│   └── .gitignore
-├── frontend/
-│   ├── public/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   ├── index.css
-│   │   ├── api/
-│   │   │   └── api.js
-│   │   └── components/
-│   │       ├── LoanForm.js
-│   │       ├── PaymentForm.js
-│   │       ├── LoanLedger.js
-│   │       └── CustomerOverview.js
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── .gitignore
-└── .gitignore (root level, if using a monorepo)
 
 # Setup Instructions
-Follow these steps to set up and run the application locally.
 
-## Prerequisites
-Node.js (LTS version recommended) and npm installed.
-
-Git installed.
-
-## Backend Setup
-Navigate to the backend directory:
-
-cd bank-lending-system/backend
-
-## Install dependencies:
-
-npm install
-
-## Create .gitignore:
-Create a file named .gitignore in the backend directory with the following content:
-
-node_modules/
-bank_lending.db
-.env
-
-Frontend Setup
-Navigate to the frontend directory:
-
-cd bank-lending-system/frontend
-
-## Install dependencies:
-
-npm install
-
-## Create .gitignore:
-Create a file named .gitignore in the frontend directory with the following content:
-
-node_modules/
-build/
-.env
-
-Ensure tailwind.config.js is correctly configured:
-The tailwind.config.js file should be at the root of your frontend directory.
-
-## Verify public/index.html:
-Ensure frontend/public/index.html contains <div id="root"></div> inside the <body> tag. This is crucial for React to mount the application.
-
-<!-- ... other head content ... -->
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-  <!-- ... -->
-</body>
-
-## Verify src/index.js:
-Ensure frontend/src/index.js is correctly setting up the React root:
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-(Note: reportWebVitals import and call are intentionally removed to avoid common Create React App setup errors if not fully configured.)
-
-## How to Run the Application
-
-cd bank-lending-system/backend
-npm start
-
-cd bank-lending-system/frontend
-npm start
+  ## How to Run the Application
+  ```bash
+# backend
+      cd bank-lending-system/backend
+      npm install
+      npm start
+# frontend
+      cd bank-lending-system/frontend
+      npm install
+      npm start
